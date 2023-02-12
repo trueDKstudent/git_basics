@@ -48,6 +48,66 @@ Changes not staged for commit:
 [vit@vm phyton_23]$ 
 ```
 
+#task5:
+before merge:
+```
+[vit@vm phyton_23]$ git log --all --oneline --graph
+* fbe09b0 (HEAD -> master) feat(add): added new changes to README.md
+| * df6984b (first_branch) feat(add): added gitignore and modified README.md
+|/  
+* c0a4b32 feat(add): added README.md
+```
+after merge:
+```
+[vit@vm phyton_23]$ git status
+On branch master
+nothing to commit, working tree clean
+[vit@vm phyton_23]$ git merge first_branch
+Auto-merging task0/README.md
+CONFLICT (content): Merge conflict in task0/README.md
+Automatic merge failed; fix conflicts and then commit the result.
+[vit@vm phyton_23]$ git branch
+  first_branch
+* master
+[vit@vm phyton_23]$ git branch
+  first_branch
+* master
+[vit@vm phyton_23]$ git checkout first_branch
+task0/README.md: needs merge
+error: you need to resolve your current index first
+[vit@vm phyton_23]$ git branch
+  first_branch
+* master
+[vit@vm phyton_23]$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+	new file:   task0/.gitignore
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   task0/README.md
+
+[vit@vm phyton_23]$ git add task0/README.md
+[vit@vm phyton_23]$ git commit -m "feat(fix): problem fixed"
+[master d259053] feat(fix): problem fixed
+[vit@vm phyton_23]$ git status
+On branch master
+nothing to commit, working tree clean
+[vit@vm phyton_23]$ git merge first_branch 
+Already up to date.
+[vit@vm phyton_23]$ git log --oneline --graph
+*   d259053 (HEAD -> master) feat(fix): problem fixed
+|\  
+| * df6984b (first_branch) feat(add): added gitignore and modified README.md
+* | fbe09b0 feat(add): added new changes to README.md
+|/  
+* c0a4b32 feat(add): added README.md
+[vit@vm phyton_23]$ 
+```
 
 
 
